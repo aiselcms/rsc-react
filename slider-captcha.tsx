@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import * as PropTypes from 'prop-types';
 import Anchor from './anchor';
 import Theme from './theme';
 
@@ -66,28 +65,6 @@ const SliderCaptcha = ({
             />
         </div>
     );
-};
-
-SliderCaptcha.propTypes = {
-    callback: PropTypes.func,
-    create: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    verify: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    variant: PropTypes.string,
-    text: PropTypes.shape({
-        anchor: PropTypes.string,
-        challenge: PropTypes.string,
-    }),
-};
-
-SliderCaptcha.defaultProps = {
-    callback: (token) => console.log(token), // eslint-disable-line no-console
-    create: 'captcha/create',
-    verify: 'captcha/verify',
-    variant: 'light',
-    text: {
-        anchor: 'I am human',
-        challenge: 'Slide to finish the puzzle',
-    },
 };
 
 export default SliderCaptcha;
