@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import Anchor from "./anchor";
 import Theme from "./theme";
-import { SliderCaptchaProps } from "@/interfaces/interfaces";
+import { SliderCaptchaProps } from "./interfaces/interfaces";
 
 const fetchCaptcha = (create) => () =>
   create instanceof Function

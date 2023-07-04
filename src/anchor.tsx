@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import Card from "./card";
 import { SuccessIcon } from "./icons";
-import { AnchorProps } from "@/interfaces/interfaces";
+import { AnchorProps } from "./interfaces/interfaces";
 
 const Anchor: FC<AnchorProps> = ({
   text,
@@ -47,8 +47,8 @@ const Anchor: FC<AnchorProps> = ({
         <div>
           <div className="scaptcha-hidden" onClick={handleClose} />
           <Card
-            fetchCaptcha={fetchCaptcha}
-            submitResponse={submitResponse}
+            fetchCaptcha={fetchCaptchaCallback}
+            submitResponse={submitResponseCallback}
             text={text}
           />
         </div>
