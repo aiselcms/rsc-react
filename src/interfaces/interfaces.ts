@@ -1,4 +1,4 @@
-export enum AppTheme {
+export enum CaptchaTheme {
   light = "light",
   dark = "dark",
 }
@@ -12,19 +12,29 @@ export interface SliderCaptchaProps {
   successCallback: (token: string) => void; // callback
   createCallback: string; // create
   verifyCallback: string; // verify
-  theme: AppTheme; // variant
+  theme: CaptchaTheme; // variant
   text: SliderCaptchaTextProps;
 }
 
 export interface ThemeProps {
-  theme: AppTheme;
+  theme: CaptchaTheme;
 }
+
+export type FetchCaptchaCallbackType = () => void;
+export type SubmitResponseCallbackType = (
+  response: {},
+  trail: {}
+) => Promise<unknown>;
 
 export interface AnchorProps {
   text: SliderCaptchaTextProps;
-  fetchCaptchaCallback: (
-    create: string | SliderCaptchaProps["createCallback"]
-  ) => void; // fetchCaptcha
-  submitResponseCallback: (response: {}, trail: {}) => Promise<unknown>; // submitResponse
+  fetchCaptchaCallback: FetchCaptchaCallbackType; // fetchCaptcha
+  submitResponseCallback: SubmitResponseCallbackType; // submitResponse
   verified: boolean;
+}
+
+export interface CardProps {
+  text: SliderCaptchaTextProps;
+  fetchCaptchaCallback: FetchCaptchaCallbackType; // fetchCaptcha
+  submitResponseCallback: SubmitResponseCallbackType; // submitResponse
 }

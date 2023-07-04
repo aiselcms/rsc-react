@@ -3,30 +3,28 @@ import Anchor from "./anchor";
 import Theme from "./theme";
 import { SliderCaptchaProps } from "./interfaces/interfaces";
 
-const fetchCaptcha = (create) => () =>
-  create instanceof Function
-    ? create() // Use provided promise for getting background and slider
-    : fetch(create, {
-        // Use create as API URL for fetch
-        method: "GET",
-        credentials: "include",
-      }).then((message) => message.json());
+const fetchCaptcha = (create: string) => (): {} =>
+  fetch(create, {
+    // Use create as API URL for fetch
+    method: "GET",
+    credentials: "include",
+  }).then((message) => message.json());
 
-const fetchVerification = (verify) => (response, trail) =>
-  verify instanceof Function
-    ? verify(response, trail) // Use provided promise for verifying captcha
-    : fetch(verify, {
-        // Verification API URL provided instead
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          response,
-          trail,
-        }),
-      }).then((message) => message.json());
+const fetchVerification =
+  (verify: string) =>
+  (response, trail): {} =>
+    fetch(verify, {
+      // Verification API URL provided instead
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        response,
+        trail,
+      }),
+    }).then((message) => message.json());
 
 const SliderCaptcha: FC<SliderCaptchaProps> = ({
   successCallback, // callback,

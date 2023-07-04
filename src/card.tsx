@@ -1,14 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, FC } from "react";
 import { LoadingIcon } from "./icons";
 import Challenge from "./challenge";
+import { CardProps } from "./interfaces/interfaces";
 
-const Card = ({ text, fetchCaptcha, submitResponse }) => {
+const Card: FC<CardProps> = ({
+  text,
+  fetchCaptchaCallback, // fetchCaptcha
+  submitResponseCallback, // submitResponse,
+}) => {
   const [key, setKey] = useState(Math.random());
   const [captcha, setCaptcha] = useState(false);
   const isMounted = useRef(false);
 
   const refreshCaptcha = () => {
-    fetchCaptcha().then((newCaptcha) => {
+    fetchCaptchaCallback().then((newCaptcha) => {
       setTimeout(() => {
         if (!isMounted.current) {
           return;
@@ -20,7 +25,7 @@ const Card = ({ text, fetchCaptcha, submitResponse }) => {
   };
   const completeCaptcha = (response, trail) =>
     new Promise((resolve) => {
-      submitResponse(response, trail).then((verified) => {
+      submitResponseCallback(response, trail).then((verified) => {
         if (verified) {
           resolve(true);
         } else {

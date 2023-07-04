@@ -10,19 +10,20 @@ const Anchor: FC<AnchorProps> = ({
   verified,
 }) => {
   const [open, setOpen] = useState(false);
-  const handleClose = () => {
+  const handleClose = (): void => {
     setOpen(false);
   };
-  const handleOpen = () => {
+  const handleOpen = (): void => {
     setOpen(true);
   };
-  const handleKey = (e) => {
+  const handleKey = (e: React.KeyboardEvent): void => {
     if (e.code === "Enter" || e.code === "Space") {
       setOpen(true);
     } else if (e.key === "Escape") {
       setOpen(false);
     }
   };
+
   return (
     <div>
       <div
@@ -47,8 +48,8 @@ const Anchor: FC<AnchorProps> = ({
         <div>
           <div className="scaptcha-hidden" onClick={handleClose} />
           <Card
-            fetchCaptcha={fetchCaptchaCallback}
-            submitResponse={submitResponseCallback}
+            fetchCaptchaCallback={fetchCaptchaCallback}
+            submitResponseCallback={submitResponseCallback}
             text={text}
           />
         </div>
