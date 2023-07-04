@@ -23,7 +23,7 @@ const SuccessIcon = () => (
             >
             <path
                 d="M3.37.473L1.187 2.654.098 1.562l.409-.409.68.682L2.96.063z"
-            fill="#c6c6c6"
+                fill="#c6c6c6"
                 />
         </svg>
     </div>

@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 import Anchor from './anchor';
 import Theme from './theme';
 
-const fetchCaptcha = (create) => () =>
-    (create instanceof Function)
-        ? create() // Use provided promise for getting background and slider
-        : fetch(create, {
+const fetchCaptcha = (fetchCaptchaLink: string) => () =>
+        fetch(fetchCaptchaLink, {
             // Use create as API URL for fetch
             method: 'GET',
             credentials: 'include',
         }).then((message) => message.json());
 
-const fetchVerification = (verify) => (response, trail) =>
-    (verify instanceof Function)
-        ? verify(response, trail) // Use provided promise for verifying captcha
-        : fetch(verify, {
+const fetchVerification = (fetchVerifyLink: string) => (response, trail) =>
+        fetch(fetchVerifyLink, {
             // Verification API URL provided instead
             method: 'POST',
             credentials: 'include',

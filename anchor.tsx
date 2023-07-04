@@ -22,34 +22,34 @@ const Anchor = ({
         <div>
             <div
                 className="scaptcha-anchor-container scaptcha-anchor-element"
-    onClick={handleOpen}
-        >
-        <button
-            suppressHydrationWarning
-    type="button"
-    className={`scaptcha-anchor-checkbox ${!verified && 'scaptcha-anchor-checkbox-default'} scaptcha-anchor-element`}
-    onKeyUp={handleKey}
-        >
-        {verified && (
-            <SuccessIcon />
-        )}
-    </button>
-    <div className="scaptcha-anchor-label scaptcha-anchor-element">
-        {text.anchor}
+                onClick={handleOpen}
+                >
+                <button
+                    suppressHydrationWarning
+                    type="button"
+                    className={`scaptcha-anchor-checkbox ${!verified && 'scaptcha-anchor-checkbox-default'} scaptcha-anchor-element`}
+                    onKeyUp={handleKey}
+                    >
+                    {verified && (
+                        <SuccessIcon />
+                    )}
+                </button>
+                <div className="scaptcha-anchor-label scaptcha-anchor-element">
+                    {text}
+                </div>
+            </div>
+            {!verified && open && (
+                <div>
+                    <div className="scaptcha-hidden" onClick={handleClose}></div>
+                    <Card
+                        fetchCaptcha={fetchCaptcha}
+                        submitResponse={submitResponse}
+                        text={text}
+                        />
+                </div>
+            )}
         </div>
-        </div>
-    {!verified && open && (
-        <div>
-            <div className="scaptcha-hidden" onClick={handleClose} />
-    <Card
-        fetchCaptcha={fetchCaptcha}
-        submitResponse={submitResponse}
-        text={text}
-        />
-        </div>
-    )}
-    </div>
-);
+    );
 };
 
 export default Anchor;
