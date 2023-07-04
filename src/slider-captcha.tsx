@@ -1,32 +1,51 @@
 import React, { FC, useState } from "react";
 import Anchor from "./anchor";
 import Theme from "./theme";
-import { SliderCaptchaProps } from "./interfaces/interfaces";
+import {
+  CaptchaResult,
+  SliderCaptchaResult,
+  TrailType,
+  VerificationResult,
+} from "./interfaces/interfaces";
 
-const fetchCaptcha = (create: string) => (): {} =>
-  fetch(create, {
-    // Use create as API URL for fetch
-    method: "GET",
-    credentials: "include",
-  }).then((message) => message.json());
+const fetchCaptcha = (create: string) => async (): Promise<CaptchaResult> => {
+  try {
+    const response = await fetch(create, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    return (await response.json()) as CaptchaResult;
+  } catch (e) {
+    return Promise.reject(e);
+  }
+};
 
 const fetchVerification =
   (verify: string) =>
-  (response, trail): {} =>
-    fetch(verify, {
-      // Verification API URL provided instead
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        response,
-        trail,
-      }),
-    }).then((message) => message.json());
+  async (
+    captchaResponse: number,
+    trail: TrailType
+  ): Promise<VerificationResult> => {
+    try {
+      const response = await fetch(verify, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          captchaResponse,
+          trail,
+        }),
+      });
+      return (await response.json()) as VerificationResult;
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  };
 
-const SliderCaptcha: FC<SliderCaptchaProps> = ({
+const SliderCaptcha: FC<SliderCaptchaResult> = ({
   successCallback, // callback,
   createCallback, // create,
   verifyCallback, // verify,
@@ -34,26 +53,33 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
   text,
 }) => {
   const [verified, setVerified] = useState(false);
-  const submitResponse = (response, trail): Promise<unknown> =>
-    new Promise((resolve) => {
-      fetchVerification(verifyCallback)(response, trail).then(
-        (verification) => {
-          if (
-            !verification.result ||
-            verification.result !== "success" ||
-            !verification.token
-          ) {
-            resolve(false);
-          } else {
-            setTimeout(() => {
-              successCallback(verification.token);
-              setVerified(true);
-            }, 500);
-            resolve(true);
-          }
-        }
+  const submitResponse = async (
+    captchaResponse: number,
+    trail: TrailType
+  ): Promise<boolean> => {
+    try {
+      const verification = await fetchVerification(verifyCallback)(
+        captchaResponse,
+        trail
       );
-    });
+      if (
+        !verification.result ||
+        verification.result !== "success" ||
+        !verification.token
+      ) {
+        return false;
+      } else {
+        setTimeout(() => {
+          successCallback(verification.token);
+          setVerified(true);
+        }, 500);
+        return true;
+      }
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  };
+
   return (
     <div className="scaptcha-container">
       <Theme theme={theme} />

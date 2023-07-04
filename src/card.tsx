@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, FC } from "react";
 import { LoadingIcon } from "./icons";
 import Challenge from "./challenge";
-import { CardProps } from "./interfaces/interfaces";
+import { CaptchaResult, CardProps, TrailType } from "./interfaces/interfaces";
 
 const Card: FC<CardProps> = ({
   text,
@@ -9,31 +9,41 @@ const Card: FC<CardProps> = ({
   submitResponseCallback, // submitResponse,
 }) => {
   const [key, setKey] = useState(Math.random());
-  const [captcha, setCaptcha] = useState(false);
+  const [captcha, setCaptcha] = useState<CaptchaResult>({
+    background: "",
+    slider: "",
+  });
   const isMounted = useRef(false);
 
-  const refreshCaptcha = () => {
-    fetchCaptchaCallback().then((newCaptcha) => {
-      setTimeout(() => {
-        if (!isMounted.current) {
-          return;
-        }
-        setKey(Math.random());
-        setCaptcha(newCaptcha);
-      }, 300);
-    });
+  const refreshCaptcha = (): void => {
+    fetchCaptchaCallback()
+      .then((newCaptcha: CaptchaResult) => {
+        setTimeout(() => {
+          if (!isMounted.current) {
+            return;
+          }
+          setKey(Math.random());
+          setCaptcha(newCaptcha);
+        }, 300);
+      })
+      .catch((e) => console.log(e));
   };
-  const completeCaptcha = (response, trail) =>
-    new Promise((resolve) => {
-      submitResponseCallback(response, trail).then((verified) => {
-        if (verified) {
-          resolve(true);
-        } else {
-          refreshCaptcha();
-          resolve(false);
-        }
-      });
-    });
+  const completeCaptcha = async (
+    captchaResponse: number,
+    trail: TrailType
+  ): Promise<boolean> => {
+    try {
+      const result = await submitResponseCallback(captchaResponse, trail);
+      if (result) {
+        return true;
+      } else {
+        refreshCaptcha();
+        return false;
+      }
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  };
 
   useEffect(() => {
     isMounted.current = true;

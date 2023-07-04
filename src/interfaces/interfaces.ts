@@ -3,12 +3,18 @@ export enum CaptchaTheme {
   dark = "dark",
 }
 
+export type TrailType = { x: number[]; y: number[] };
+export type SubmitResponseCallbackType = (
+  response: number,
+  trail: TrailType
+) => Promise<boolean>;
+
 export interface SliderCaptchaTextProps {
   anchor: string;
   challenge: string;
 }
 
-export interface SliderCaptchaProps {
+export interface SliderCaptchaResult {
   successCallback: (token: string) => void; // callback
   createCallback: string; // create
   verifyCallback: string; // verify
@@ -20,11 +26,12 @@ export interface ThemeProps {
   theme: CaptchaTheme;
 }
 
-export type FetchCaptchaCallbackType = () => void;
-export type SubmitResponseCallbackType = (
-  response: {},
-  trail: {}
-) => Promise<unknown>;
+export interface CaptchaResult {
+  background: string;
+  slider: string;
+}
+
+export type FetchCaptchaCallbackType = () => Promise<CaptchaResult>;
 
 export interface AnchorProps {
   text: SliderCaptchaTextProps;
@@ -37,4 +44,15 @@ export interface CardProps {
   text: SliderCaptchaTextProps;
   fetchCaptchaCallback: FetchCaptchaCallbackType; // fetchCaptcha
   submitResponseCallback: SubmitResponseCallbackType; // submitResponse
+}
+
+export interface ChallengeProps {
+  text: SliderCaptchaTextProps;
+  captcha: CaptchaResult;
+  completeCaptcha: SubmitResponseCallbackType;
+}
+
+export interface VerificationResult {
+  result: string;
+  token: string;
 }
