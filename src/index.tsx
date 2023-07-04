@@ -1,3 +1,3 @@
-import SliderCaptcha from './slider-captcha';
+import SliderCaptcha from "./slider-captcha";
 
 export default SliderCaptcha;
