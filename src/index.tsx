@@ -1,3 +1,2 @@
-import SliderCaptcha from "./slider-captcha";
-
-export default SliderCaptcha;
+export { AppTheme } from "interfaces/interfaces";
+export { default as SliderCaptcha } from "./slider-captcha";
