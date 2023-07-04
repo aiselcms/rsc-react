@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import * as PropTypes from "prop-types";
+import React, { FC, useState } from "react";
 import Card from "./card";
 import { SuccessIcon } from "./icons";
+import { AnchorProps } from "@/interfaces/interfaces";
 
-const Anchor = ({ text, fetchCaptcha, submitResponse, verified }) => {
+const Anchor: FC<AnchorProps> = ({
+  text,
+  fetchCaptchaCallback, // fetchCaptcha,
+  submitResponseCallback, // submitResponse,
+  verified,
+}) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
@@ -52,6 +57,7 @@ const Anchor = ({ text, fetchCaptcha, submitResponse, verified }) => {
   );
 };
 
+/*
 Anchor.propTypes = {
   fetchCaptcha: PropTypes.func.isRequired,
   submitResponse: PropTypes.func.isRequired,
@@ -61,5 +67,6 @@ Anchor.propTypes = {
   }).isRequired,
   verified: PropTypes.bool.isRequired,
 };
+*/
 
 export default Anchor;

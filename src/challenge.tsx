@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import * as PropTypes from "prop-types";
 import { ArrowIcon, SuccessIcon, FailureIcon } from "./icons";
 
 const imageDataUrl = (image) =>
@@ -156,7 +155,7 @@ const Challenge = ({ text, captcha, completeCaptcha }) => {
   );
 };
 
-Challenge.propTypes = {
+/* Challenge.propTypes = {
   completeCaptcha: PropTypes.func.isRequired,
   captcha: PropTypes.shape({
     slider: PropTypes.shape({
@@ -172,6 +171,6 @@ Challenge.propTypes = {
     anchor: PropTypes.string,
     challenge: PropTypes.string,
   }).isRequired,
-};
+};*/
 
 export default Challenge;

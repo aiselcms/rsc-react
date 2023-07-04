@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import * as PropTypes from "prop-types";
+import React, { FC, useState } from "react";
 import Anchor from "./anchor";
 import Theme from "./theme";
+import { SliderCaptchaProps } from "@/interfaces/interfaces";
 
 const fetchCaptcha = (create) => () =>
   create instanceof Function
@@ -28,39 +28,48 @@ const fetchVerification = (verify) => (response, trail) =>
         }),
       }).then((message) => message.json());
 
-const SliderCaptcha = ({ callback, create, verify, variant, text }) => {
+const SliderCaptcha: FC<SliderCaptchaProps> = ({
+  successCallback, // callback,
+  createCallback, // create,
+  verifyCallback, // verify,
+  theme, // variant,
+  text,
+}) => {
   const [verified, setVerified] = useState(false);
-  const submitResponse = (response, trail) =>
+  const submitResponse = (response, trail): Promise<unknown> =>
     new Promise((resolve) => {
-      fetchVerification(verify)(response, trail).then((verification) => {
-        if (
-          !verification.result ||
-          verification.result !== "success" ||
-          !verification.token
-        ) {
-          resolve(false);
-        } else {
-          setTimeout(() => {
-            callback(verification.token);
-            setVerified(true);
-          }, 500);
-          resolve(true);
+      fetchVerification(verifyCallback)(response, trail).then(
+        (verification) => {
+          if (
+            !verification.result ||
+            verification.result !== "success" ||
+            !verification.token
+          ) {
+            resolve(false);
+          } else {
+            setTimeout(() => {
+              successCallback(verification.token);
+              setVerified(true);
+            }, 500);
+            resolve(true);
+          }
         }
-      });
+      );
     });
   return (
     <div className="scaptcha-container">
-      <Theme variant={variant} />
+      <Theme theme={theme} />
       <Anchor
         text={text}
-        fetchCaptcha={fetchCaptcha(create)}
-        submitResponse={submitResponse}
+        fetchCaptchaCallback={fetchCaptcha(createCallback)}
+        submitResponseCallback={submitResponse}
         verified={verified}
       />
     </div>
   );
 };
 
+/*
 SliderCaptcha.propTypes = {
   callback: PropTypes.func,
   create: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
@@ -71,7 +80,8 @@ SliderCaptcha.propTypes = {
     challenge: PropTypes.string,
   }),
 };
-
+ */
+/*
 SliderCaptcha.defaultProps = {
   callback: (token) => console.log(token), // eslint-disable-line no-console
   create: "captcha/create",
@@ -81,6 +91,6 @@ SliderCaptcha.defaultProps = {
     anchor: "I am human",
     challenge: "Slide to finish the puzzle",
   },
-};
+};*/
 
 export default SliderCaptcha;

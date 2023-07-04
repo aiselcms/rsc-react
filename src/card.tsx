@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import * as PropTypes from "prop-types";
 import { LoadingIcon } from "./icons";
 import Challenge from "./challenge";
 
@@ -57,6 +56,7 @@ const Card = ({ text, fetchCaptcha, submitResponse }) => {
   );
 };
 
+/*
 Card.propTypes = {
   fetchCaptcha: PropTypes.func.isRequired,
   submitResponse: PropTypes.func.isRequired,
@@ -65,5 +65,6 @@ Card.propTypes = {
     challenge: PropTypes.string,
   }).isRequired,
 };
+ */
 
 export default Card;

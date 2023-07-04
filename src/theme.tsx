@@ -1,10 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import lightTheme from "./style/light";
 import darkTheme from "./style/dark";
+import { AppTheme, ThemeProps } from "@/interfaces/interfaces";
 
-const Theme = ({ variant }) => (
+const Theme: FC<ThemeProps> = ({ theme }) => (
   <style suppressHydrationWarning>
-    {variant === "dark" ? darkTheme : lightTheme}
+    {theme === AppTheme.dark ? darkTheme : lightTheme}
   </style>
 );
 
