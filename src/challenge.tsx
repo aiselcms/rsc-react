@@ -2,8 +2,10 @@ import React, { FC, useState } from "react";
 import { ArrowIcon, SuccessIcon, FailureIcon } from "./icons";
 import { ChallengeProps } from "./interfaces/interfaces";
 
-const imageDataUrl = (image: string): string =>
-  `data:image/png;base64,${image}`;
+const imageDataUrl = (image: string): string => {
+  console.log('AAAAAAAAAAAAAAAAAAAAAAA');
+  return `data:image/png;base64,${image}`;
+};
 
 const slider = {
   default: {
