@@ -3,7 +3,6 @@ import { ArrowIcon, SuccessIcon, FailureIcon } from "./icons";
 import { ChallengeProps } from "./interfaces/interfaces";
 
 const imageDataUrl = (image: string): string => {
-  console.log(image);
   return `data:image/png;base64,${image}`;
 };
 
