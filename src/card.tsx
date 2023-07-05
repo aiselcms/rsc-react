@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, FC } from "react";
 import { LoadingIcon } from "./icons";
 import Challenge from "./challenge";
-import { CaptchaResult, CardProps, TrailType } from "./interfaces/interfaces";
+import { CaptchaResult, CardProps, Trail } from "./interfaces/interfaces";
 
 const Card: FC<CardProps> = ({
   text,
@@ -30,7 +30,7 @@ const Card: FC<CardProps> = ({
   };
   const completeCaptcha = async (
     captchaResponse: number,
-    trail: TrailType
+    trail: Trail
   ): Promise<boolean> => {
     try {
       const result = await submitResponseCallback(captchaResponse, trail);

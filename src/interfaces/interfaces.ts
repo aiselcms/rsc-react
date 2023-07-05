@@ -1,41 +1,50 @@
+/*
+  ENUMS
+ */
 export enum CaptchaTheme {
   light = "light",
   dark = "dark",
 }
 
-export type TrailType = { x: number[]; y: number[] };
-export type SubmitResponseCallbackType = (
-  response: number,
-  trail: TrailType
-) => Promise<boolean>;
-
-export interface SliderCaptchaTextProps {
-  anchor: string;
-  challenge: string;
-}
-
-export interface CaptchaResult {
+/*
+  TYPES
+ */
+export type Trail = { x: number[]; y: number[] };
+export type CaptchaResult = {
   background: string;
   slider: string;
-}
-
-export interface VerificationResult {
+};
+export type VerificationResult = {
   result: string;
   token: string;
-}
+};
 
-export type CreateCaptchaCallbackType = () => Promise<CaptchaResult>;
-export type VerifyCaptchaCallbackType = (
-  response: number,
-  trail: TrailType
+export type CreateCaptchaCallback = () => Promise<CaptchaResult>;
+export type VerifyCaptchaCallback = (
+  captchaResponse: number,
+  trail: Trail
 ) => Promise<VerificationResult>;
+export type SuccessCaptchaCallback = (token: string) => Promise<void>;
+export type SubmitResponseCallback = (
+  captchaResponse: number,
+  trail: Trail
+) => Promise<boolean>;
 
-export interface SliderCaptchaResult {
-  successCallback: (token: string) => void; // callback
-  createCallback: CreateCaptchaCallbackType; // create
-  verifyCallback: VerifyCaptchaCallbackType; // verify
+export type CaptchaText = {
+  anchor: string;
+  challenge: string;
+};
+
+/*
+  INTERFACES
+ */
+
+export interface SliderCaptchaProps {
+  successCallback: SuccessCaptchaCallback; // callback
+  createCallback: CreateCaptchaCallback; // create
+  verifyCallback: VerifyCaptchaCallback; // verify
   theme: CaptchaTheme; // variant
-  text: SliderCaptchaTextProps;
+  text: CaptchaText;
 }
 
 export interface ThemeProps {
@@ -45,20 +54,20 @@ export interface ThemeProps {
 export type FetchCaptchaCallbackType = () => Promise<CaptchaResult>;
 
 export interface AnchorProps {
-  text: SliderCaptchaTextProps;
+  text: CaptchaText;
   fetchCaptchaCallback: FetchCaptchaCallbackType; // fetchCaptcha
-  submitResponseCallback: SubmitResponseCallbackType; // submitResponse
+  submitResponseCallback: SubmitResponseCallback; // submitResponse
   verified: boolean;
 }
 
 export interface CardProps {
-  text: SliderCaptchaTextProps;
+  text: CaptchaText;
   fetchCaptchaCallback: FetchCaptchaCallbackType; // fetchCaptcha
-  submitResponseCallback: SubmitResponseCallbackType; // submitResponse
+  submitResponseCallback: SubmitResponseCallback; // submitResponse
 }
 
 export interface ChallengeProps {
-  text: SliderCaptchaTextProps;
+  text: CaptchaText;
   captcha: CaptchaResult;
-  completeCaptcha: SubmitResponseCallbackType;
+  completeCaptcha: SubmitResponseCallback;
 }

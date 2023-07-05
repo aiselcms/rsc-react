@@ -3,59 +3,36 @@ import Anchor from "./anchor";
 import Theme from "./theme";
 import {
   CaptchaResult,
-  CreateCaptchaCallbackType,
-  SliderCaptchaResult,
-  TrailType,
+  CreateCaptchaCallback,
+  SliderCaptchaProps,
+  Trail,
   VerificationResult,
-  VerifyCaptchaCallbackType,
+  VerifyCaptchaCallback,
 } from "./interfaces/interfaces";
 
 const fetchCaptcha =
-  (create: CreateCaptchaCallbackType) => async (): Promise<CaptchaResult> => {
+  (create: CreateCaptchaCallback) => async (): Promise<CaptchaResult> => {
     try {
       return await create();
     } catch (e) {
       return Promise.reject(e);
     }
-    /* try {
-    const response = await fetch(create, {
-      method: "GET",
-      credentials: "include",
-    });
-
-    return (await response.json()) as CaptchaResult;
-
-  } catch (e) {
-    return Promise.reject(e);
-  }*/
   };
 
 const fetchVerification =
-  (verify: VerifyCaptchaCallbackType) =>
+  (verify: VerifyCaptchaCallback) =>
   async (
     captchaResponse: number,
-    trail: TrailType
+    trail: Trail
   ): Promise<VerificationResult> => {
     try {
-      /* const response = await fetch(verify, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          captchaResponse,
-          trail,
-        }),
-      });
-      return (await response.json()) as VerificationResult;*/
       return await verify(captchaResponse, trail);
     } catch (e) {
       return Promise.reject(e);
     }
   };
 
-const SliderCaptcha: FC<SliderCaptchaResult> = ({
+const SliderCaptcha: FC<SliderCaptchaProps> = ({
   successCallback, // callback,
   createCallback, // create,
   verifyCallback, // verify,
@@ -65,7 +42,7 @@ const SliderCaptcha: FC<SliderCaptchaResult> = ({
   const [verified, setVerified] = useState(false);
   const submitResponse = async (
     captchaResponse: number,
-    trail: TrailType
+    trail: Trail
   ): Promise<boolean> => {
     try {
       const verification = await fetchVerification(verifyCallback)(
@@ -80,8 +57,10 @@ const SliderCaptcha: FC<SliderCaptchaResult> = ({
         return false;
       } else {
         setTimeout(() => {
-          successCallback(verification.token);
-          setVerified(true);
+          void (async (): Promise<void> => {
+            await successCallback(verification.token);
+            setVerified(true);
+          })();
         }, 500);
         return true;
       }

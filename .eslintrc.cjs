@@ -21,7 +21,7 @@ module.exports = {
     'eol-last': ['error'],
     eqeqeq: ['warn'],
     semi: ['error', 'always'],
-    // quotes: ['error', 'single'],
+    quotes: ['error', 'double'],
     'no-console': [
       'warn',
       {
@@ -49,7 +49,7 @@ module.exports = {
     'max-len': [
       'error',
       {
-        code: 240,
+        code: 120,
         ignoreStrings: true,
         ignoreComments: true,
         ignoreUrls: true,
