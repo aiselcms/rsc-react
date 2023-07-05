@@ -3,32 +3,41 @@ import Anchor from "./anchor";
 import Theme from "./theme";
 import {
   CaptchaResult,
+  CreateCaptchaCallbackType,
   SliderCaptchaResult,
   TrailType,
   VerificationResult,
+  VerifyCaptchaCallbackType,
 } from "./interfaces/interfaces";
 
-const fetchCaptcha = (create: string) => async (): Promise<CaptchaResult> => {
-  try {
+const fetchCaptcha =
+  (create: CreateCaptchaCallbackType) => async (): Promise<CaptchaResult> => {
+    try {
+      return await create();
+    } catch (e) {
+      return Promise.reject(e);
+    }
+    /* try {
     const response = await fetch(create, {
       method: "GET",
       credentials: "include",
     });
 
     return (await response.json()) as CaptchaResult;
+
   } catch (e) {
     return Promise.reject(e);
-  }
-};
+  }*/
+  };
 
 const fetchVerification =
-  (verify: string) =>
+  (verify: VerifyCaptchaCallbackType) =>
   async (
     captchaResponse: number,
     trail: TrailType
   ): Promise<VerificationResult> => {
     try {
-      const response = await fetch(verify, {
+      /* const response = await fetch(verify, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -39,7 +48,8 @@ const fetchVerification =
           trail,
         }),
       });
-      return (await response.json()) as VerificationResult;
+      return (await response.json()) as VerificationResult;*/
+      return await verify(captchaResponse, trail);
     } catch (e) {
       return Promise.reject(e);
     }

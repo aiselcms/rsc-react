@@ -14,21 +14,32 @@ export interface SliderCaptchaTextProps {
   challenge: string;
 }
 
+export interface CaptchaResult {
+  background: string;
+  slider: string;
+}
+
+export interface VerificationResult {
+  result: string;
+  token: string;
+}
+
+export type CreateCaptchaCallbackType = () => Promise<CaptchaResult>;
+export type VerifyCaptchaCallbackType = (
+  response: number,
+  trail: TrailType
+) => Promise<VerificationResult>;
+
 export interface SliderCaptchaResult {
   successCallback: (token: string) => void; // callback
-  createCallback: string; // create
-  verifyCallback: string; // verify
+  createCallback: CreateCaptchaCallbackType; // create
+  verifyCallback: VerifyCaptchaCallbackType; // verify
   theme: CaptchaTheme; // variant
   text: SliderCaptchaTextProps;
 }
 
 export interface ThemeProps {
   theme: CaptchaTheme;
-}
-
-export interface CaptchaResult {
-  background: string;
-  slider: string;
 }
 
 export type FetchCaptchaCallbackType = () => Promise<CaptchaResult>;
@@ -50,9 +61,4 @@ export interface ChallengeProps {
   text: SliderCaptchaTextProps;
   captcha: CaptchaResult;
   completeCaptcha: SubmitResponseCallbackType;
-}
-
-export interface VerificationResult {
-  result: string;
-  token: string;
 }
