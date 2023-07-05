@@ -3,7 +3,7 @@ import { ArrowIcon, SuccessIcon, FailureIcon } from "./icons";
 import { ChallengeProps } from "./interfaces/interfaces";
 
 const imageDataUrl = (image: string): string =>
-  `data:image/png;base64,${Buffer.from(image).toString("base64")}`;
+  `data:image/png;base64,${image}`;
 
 const slider = {
   default: {
