@@ -53,10 +53,8 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
         return false;
       } else {
         setTimeout(() => {
-          void (async (): Promise<void> => {
-            await successCallback(verification.token);
-            setVerified(true);
-          })();
+          successCallback(verification.token);
+          setVerified(true);
         }, 500);
         return true;
       }

@@ -24,7 +24,7 @@ export type VerifyCaptchaCallback = (
   captchaResponse: number,
   trail: Trail
 ) => Promise<VerificationResult>;
-export type SuccessCaptchaCallback = (token: string) => Promise<void>;
+export type SuccessCaptchaCallback = (token: string) => void;
 export type SubmitResponseCallback = (
   captchaResponse: number,
   trail: Trail
