@@ -49,11 +49,7 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
         captchaResponse,
         trail
       );
-      if (
-        !verification.result ||
-        verification.result !== "success" ||
-        !verification.token
-      ) {
+      if (!verification.result || !verification.token) {
         return false;
       } else {
         setTimeout(() => {
