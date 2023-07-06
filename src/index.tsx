@@ -1,5 +1,4 @@
 export {
-  CaptchaTheme,
   type CaptchaResult,
   type Trail,
   type VerificationResult,
