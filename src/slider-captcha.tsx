@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import Anchor from "./anchor";
-import Theme from "./theme";
 import {
   CaptchaResult,
   CreateCaptchaCallback,
@@ -9,6 +8,8 @@ import {
   VerificationResult,
   VerifyCaptchaCallback,
 } from "./interfaces/interfaces";
+import ThemeProvider from "./providers/ThemeProvider";
+import "./styles/styles.scss";
 
 const fetchCaptcha =
   (create: CreateCaptchaCallback) => async (): Promise<CaptchaResult> => {
@@ -36,7 +37,6 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
   successCallback, // callback,
   createCallback, // create,
   verifyCallback, // verify,
-  theme, // variant,
   text,
 }) => {
   const [verified, setVerified] = useState(false);
@@ -64,15 +64,16 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
   };
 
   return (
-    <div className="scaptcha-container">
-      <Theme theme={theme} />
-      <Anchor
-        text={text}
-        fetchCaptchaCallback={fetchCaptcha(createCallback)}
-        submitResponseCallback={submitResponse}
-        verified={verified}
-      />
-    </div>
+    <ThemeProvider>
+      <div className="scaptcha-container">
+        <Anchor
+          text={text}
+          fetchCaptchaCallback={fetchCaptcha(createCallback)}
+          submitResponseCallback={submitResponse}
+          verified={verified}
+        />
+      </div>
+    </ThemeProvider>
   );
 };
 

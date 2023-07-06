@@ -1,10 +1,6 @@
 /*
   ENUMS
  */
-export enum CaptchaTheme {
-  light = "light",
-  dark = "dark",
-}
 
 /*
   TYPES
@@ -43,12 +39,7 @@ export interface SliderCaptchaProps {
   successCallback: SuccessCaptchaCallback; // callback
   createCallback: CreateCaptchaCallback; // create
   verifyCallback: VerifyCaptchaCallback; // verify
-  theme: CaptchaTheme; // variant
   text: CaptchaText;
-}
-
-export interface ThemeProps {
-  theme: CaptchaTheme;
 }
 
 export type FetchCaptchaCallbackType = () => Promise<CaptchaResult>;
