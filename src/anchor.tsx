@@ -25,7 +25,7 @@ const Anchor: FC<AnchorProps> = ({
   };
 
   return (
-    <div>
+    <div className={"rsc-anchor"}>
       <div
         className="rsc-anchor-container scaptcha-anchor-element"
         onClick={handleOpen}
