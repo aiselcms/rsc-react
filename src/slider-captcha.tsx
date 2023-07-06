@@ -15,6 +15,7 @@ const fetchCaptcha =
     try {
       return await create();
     } catch (e) {
+      console.log(e);
       return Promise.reject(e);
     }
   };
