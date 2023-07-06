@@ -8,23 +8,23 @@ const imageDataUrl = (image: string): string => {
 
 const slider = {
   default: {
-    track: "rscaptcha-card-slider-track-default",
-    control: "rscaptcha-card-slider-control-default",
+    track: "rsc-card-slider-track-default",
+    control: "rsc-card-slider-control-default",
     icon: <ArrowIcon />,
   },
   active: {
-    track: "rscaptcha-card-slider-track-active",
-    control: "rscaptcha-card-slider-control-active",
+    track: "rsc-card-slider-track-active",
+    control: "rsc-card-slider-control-active",
     icon: <ArrowIcon />,
   },
   success: {
-    track: "rscaptcha-card-slider-track-success",
-    control: "rscaptcha-card-slider-control-success",
+    track: "rsc-card-slider-track-success",
+    control: "rsc-card-slider-control-success",
     icon: <SuccessIcon />,
   },
   failure: {
-    track: "rscaptcha-card-slider-track-failure",
-    control: "rscaptcha-card-slider-control-failure",
+    track: "rsc-card-slider-track-failure",
+    control: "rsc-card-slider-control-failure",
     icon: <FailureIcon />,
   },
 };
@@ -127,13 +127,13 @@ const Challenge: FC<ChallengeProps> = ({ text, captcha, completeCaptcha }) => {
       onMouseLeave={handleEnd}
     >
       <div
-        className="rscaptcha-card-background scaptcha-card-element"
+        className="rsc-card-background scaptcha-card-element"
         style={{
           backgroundImage: `url('${imageDataUrl(captcha.background)}')`,
         }}
       />
       <div
-        className="rscaptcha-card-slider-puzzle scaptcha-card-element"
+        className="rsc-card-slider-puzzle scaptcha-card-element"
         style={{
           backgroundImage: `url('${imageDataUrl(captcha.slider)}')`,
           left: `${scaleSliderPosition(trail.x[trail.x.length - 1])}px`,
@@ -141,24 +141,24 @@ const Challenge: FC<ChallengeProps> = ({ text, captcha, completeCaptcha }) => {
         onMouseDown={handleMouseStart}
         onTouchStart={handleTouchStart}
       />
-      <div className="rscaptcha-card-slider-container scaptcha-card-element">
-        <div className="rscaptcha-card-slider-track scaptcha-card-element" />
+      <div className="rsc-card-slider-container scaptcha-card-element">
+        <div className="rsc-card-slider-track scaptcha-card-element" />
         <div
-          className="rscaptcha-card-slider-label scaptcha-card-element"
+          className="rsc-card-slider-label scaptcha-card-element"
           style={{ opacity: solving ? 0 : 1 }}
         >
           <span>{text.challenge}</span>
         </div>
         <div
-          className={`rscaptcha-card-slider-mask ${sliderVariant.track} scaptcha-card-element`}
+          className={`rsc-card-slider-mask ${sliderVariant.track} scaptcha-card-element`}
           style={{ width: `${trail.x[trail.x.length - 1] + 30}px` }}
         />
         <div
-          className="rscaptcha-card-slider-container scaptcha-card-element"
+          className="rsc-card-slider-container scaptcha-card-element"
           draggable="false"
         />
         <div
-          className={`rscaptcha-card-slider-control ${sliderVariant.control} scaptcha-card-element`}
+          className={`rsc-card-slider-control ${sliderVariant.control} scaptcha-card-element`}
           style={{ left: `${trail.x[trail.x.length - 1]}px` }}
           onMouseDown={handleMouseStart}
           onTouchStart={handleTouchStart}

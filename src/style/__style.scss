@@ -32,7 +32,7 @@ $control-size: 30px;
 $anchor-height: 50px;
 
 @mixin generate($colors) {
-  .rscaptcha-anchor-container {
+  .rsc-anchor-container {
     @include center-left;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -43,7 +43,7 @@ $anchor-height: 50px;
     max-width: 400px;
   }
 
-  .rscaptcha-anchor-checkbox {
+  .rsc-anchor-checkbox {
     @include center;
     padding: 0;
     display: flex;
@@ -54,12 +54,12 @@ $anchor-height: 50px;
     background-color: map.get($colors, 'anchor-checkbox');
   }
 
-  .rscaptcha-anchor-checkbox-default:hover {
+  .rsc-anchor-checkbox-default:hover {
     cursor: pointer;
     border: 2px solid rgba(0, 0, 0, 0.35);
   }
 
-  .rscaptcha-anchor-label {
+  .rsc-anchor-label {
     @include typography;
     @include center-left;
     color: map.get($colors, 'anchor-label');
@@ -68,12 +68,12 @@ $anchor-height: 50px;
     cursor: default;
   }
 
-  .rscaptcha-card-background {
+  .rsc-card-background {
     width: $width;
     height: $height;
   }
 
-  .rscaptcha-card-loading {
+  .rsc-card-loading {
     @include center;
     margin: $card-padding;
     position: absolute;
@@ -84,7 +84,7 @@ $anchor-height: 50px;
     z-index: 1;
   }
 
-  .rscaptcha-card-container {
+  .rsc-card-container {
     position: absolute;
     padding: $card-padding $card-padding 0px $card-padding;
     min-width: $width + 2 * $card-padding;
@@ -97,13 +97,13 @@ $anchor-height: 50px;
   }
 
   @media only screen and (max-width: 639px) {
-    .rscaptcha-card-container {
+    .rsc-card-container {
       left: 50%;
       margin-left: - ($width / 2) - $card-padding;
     }
   }
 
-  .rscaptcha-card-slider-puzzle {
+  .rsc-card-slider-puzzle {
     margin-left: $card-padding;
     margin-top: $card-padding;
     position: absolute;
@@ -114,7 +114,7 @@ $anchor-height: 50px;
     cursor: pointer;
   }
 
-  .rscaptcha-card-slider-control {
+  .rsc-card-slider-control {
     @include center;
     position: absolute;
     top: 0;
@@ -128,39 +128,39 @@ $anchor-height: 50px;
     border-radius: 50%;
   }
 
-  .rscaptcha-card-slider-control-default {
+  .rsc-card-slider-control-default {
     background-color: map.get($colors, 'card-control-background');
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
 
-  .rscaptcha-card-slider-control-active,
-  .rscaptcha-card-slider-control-success,
-  .rscaptcha-card-slider-control-failure {
+  .rsc-card-slider-control-active,
+  .rsc-card-slider-control-success,
+  .rsc-card-slider-control-failure {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
-  .rscaptcha-card-slider-control-active {
+  .rsc-card-slider-control-active {
     background-color: map.get($colors, 'card-control-active');
   }
 
-  .rscaptcha-card-slider-control-success {
+  .rsc-card-slider-control-success {
     background-color: map.get($colors, 'card-control-success');
   }
 
-  .rscaptcha-card-slider-control-failure {
+  .rsc-card-slider-control-failure {
     background-color: map.get($colors, 'card-control-failure');
   }
 
-  .rscaptcha-card-slider-container {
+  .rsc-card-slider-container {
     margin-top: 7px;
     position: relative;
     height: 44px;
     width: $width;
   }
 
-  .rscaptcha-card-slider-track {
+  .rsc-card-slider-track {
     box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 3px;
@@ -171,7 +171,7 @@ $anchor-height: 50px;
     border-radius: $track-height / 2;
   }
 
-  .rscaptcha-card-slider-mask {
+  .rsc-card-slider-mask {
     box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 3px;
@@ -182,20 +182,20 @@ $anchor-height: 50px;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
-  .rscaptcha-card-slider-track-default,
-  .rscaptcha-card-slider-track-active {
+  .rsc-card-slider-track-default,
+  .rsc-card-slider-track-active {
     background-color: map.get($colors, 'card-track-active');
   }
 
-  .rscaptcha-card-slider-track-success {
+  .rsc-card-slider-track-success {
     background-color: map.get($colors, 'card-track-success');
   }
 
-  .rscaptcha-card-slider-track-failure {
+  .rsc-card-slider-track-failure {
     background-color: map.get($colors, 'card-track-failure');
   }
 
-  .rscaptcha-card-slider-label {
+  .rsc-card-slider-label {
     @include typography;
     @include center;
     color: map.get($colors, 'card-track-label');
@@ -209,13 +209,13 @@ $anchor-height: 50px;
     cursor: default;
   }
 
-  .rscaptcha-icon-container {
+  .rsc-icon-container {
     @include center;
     margin-left: 1px;
     margin-top: 1px;
   }
 
-  .rscaptcha-hidden {
+  .rsc-hidden {
     background: none;
     top: 0;
     left: 0;
@@ -225,7 +225,7 @@ $anchor-height: 50px;
     position: fixed;
   }
 
-  .rscaptcha-container * {
+  .rsc-container * {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }

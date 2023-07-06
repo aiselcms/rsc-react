@@ -1,9 +1,9 @@
 import React from "react";
 
 const FailureIcon = (): JSX.Element => (
-  <div className="rscaptcha-icon-container">
+  <div className="rsc-icon-container">
     <svg
-      className="rscaptcha-icon-light"
+      className="rsc-icon-light"
       xmlns="http://www.w3.org/2000/svg"
       width="13"
       height="10.312"
@@ -15,7 +15,7 @@ const FailureIcon = (): JSX.Element => (
       />
     </svg>
     <svg
-      className="rscaptcha-icon-dark"
+      className="rsc-icon-dark"
       xmlns="http://www.w3.org/2000/svg"
       width="13"
       height="10.312"

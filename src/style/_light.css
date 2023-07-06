@@ -1,12 +1,12 @@
-.rscaptcha-icon-dark {
+.rsc-icon-dark {
     display: none;
 }
 
-.rscaptcha-icon-light {
+.rsc-icon-light {
     display: block;
 }
 
-.rscaptcha-anchor-container {
+.rsc-anchor-container {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -19,7 +19,7 @@
     max-width: 400px;
 }
 
-.rscaptcha-anchor-checkbox {
+.rsc-anchor-checkbox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,12 +32,12 @@
     background-color: #fff;
 }
 
-.rscaptcha-anchor-checkbox-default:hover {
+.rsc-anchor-checkbox-default:hover {
     cursor: pointer;
     border: 2px solid rgba(0, 0, 0, 0.35);
 }
 
-.rscaptcha-anchor-label {
+.rsc-anchor-label {
     font-size: 13px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 400;
@@ -50,12 +50,12 @@
     cursor: default;
 }
 
-.rscaptcha-card-background {
+.rsc-card-background {
     width: 250px;
     height: 150px;
 }
 
-.rscaptcha-card-loading {
+.rsc-card-loading {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +68,7 @@
     z-index: 1;
 }
 
-.rscaptcha-card-container {
+.rsc-card-container {
     position: absolute;
     padding: 15px 15px 0px 15px;
     min-width: 280px;
@@ -80,12 +80,12 @@
 }
 
 @media only screen and (max-width: 639px) {
-    .rscaptcha-card-container {
+    .rsc-card-container {
         left: 50%;
         margin-left: -140px;
     }
 }
-.rscaptcha-card-slider-puzzle {
+.rsc-card-slider-puzzle {
     margin-left: 15px;
     margin-top: 15px;
     position: absolute;
@@ -96,7 +96,7 @@
     cursor: pointer;
 }
 
-.rscaptcha-card-slider-control {
+.rsc-card-slider-control {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,37 +110,37 @@
     border-radius: 50%;
 }
 
-.rscaptcha-card-slider-control-default {
+.rsc-card-slider-control-default {
     background-color: #fafafa;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
-.rscaptcha-card-slider-control-active,
-.rscaptcha-card-slider-control-success,
-.rscaptcha-card-slider-control-failure {
+.rsc-card-slider-control-active,
+.rsc-card-slider-control-success,
+.rsc-card-slider-control-failure {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-.rscaptcha-card-slider-control-active {
+.rsc-card-slider-control-active {
     background-color: #0889e4;
 }
 
-.rscaptcha-card-slider-control-success {
+.rsc-card-slider-control-success {
     background-color: #35dd74;
 }
 
-.rscaptcha-card-slider-control-failure {
+.rsc-card-slider-control-failure {
     background-color: #e40808;
 }
 
-.rscaptcha-card-slider-container {
+.rsc-card-slider-container {
     margin-top: 7px;
     position: relative;
     height: 44px;
     width: 250px;
 }
 
-.rscaptcha-card-slider-track {
+.rsc-card-slider-track {
     box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 3px;
@@ -151,7 +151,7 @@
     border-radius: 12px;
 }
 
-.rscaptcha-card-slider-mask {
+.rsc-card-slider-mask {
     box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 3px;
@@ -162,20 +162,20 @@
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.rscaptcha-card-slider-track-default,
-.rscaptcha-card-slider-track-active {
+.rsc-card-slider-track-default,
+.rsc-card-slider-track-active {
     background-color: #3caeff;
 }
 
-.rscaptcha-card-slider-track-success {
+.rsc-card-slider-track-success {
     background-color: #83f788;
 }
 
-.rscaptcha-card-slider-track-failure {
+.rsc-card-slider-track-failure {
     background-color: #ff3c3c;
 }
 
-.rscaptcha-card-slider-label {
+.rsc-card-slider-label {
     font-size: 13px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 400;
@@ -193,7 +193,7 @@
     cursor: default;
 }
 
-.rscaptcha-icon-container {
+.rsc-icon-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -201,7 +201,7 @@
     margin-top: 1px;
 }
 
-.rscaptcha-hidden {
+.rsc-hidden {
     background: none;
     top: 0;
     left: 0;
@@ -211,7 +211,7 @@
     position: fixed;
 }
 
-.rscaptcha-container * {
+.rsc-container * {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }

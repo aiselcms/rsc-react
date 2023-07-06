@@ -65,7 +65,7 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
 
   return (
     <ThemeProvider>
-      <div className="rscaptcha-container">
+      <div className="rsc-container">
         <Anchor
           text={text}
           fetchCaptchaCallback={fetchCaptcha(createCallback)}
