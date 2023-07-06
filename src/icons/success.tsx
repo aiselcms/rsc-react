@@ -3,7 +3,7 @@ import React from "react";
 const SuccessIcon = (): JSX.Element => (
   <div className="rscaptcha-icon-container">
     <svg
-      className="scaptcha-icon-light"
+      className="rscaptcha-icon-light"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 3.44 2.728"
       height="10.312"
@@ -15,7 +15,7 @@ const SuccessIcon = (): JSX.Element => (
       />
     </svg>
     <svg
-      className="scaptcha-icon-dark"
+      className="rscaptcha-icon-dark"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 3.44 2.728"
       height="10.312"
