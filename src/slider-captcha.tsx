@@ -9,7 +9,7 @@ import {
   VerifyCaptchaCallback,
 } from "./interfaces/interfaces";
 import ThemeProvider from "./providers/ThemeProvider";
-import "./styles/style.css";
+import "./styles/styles.scss";
 
 const fetchCaptcha =
   (create: CreateCaptchaCallback) => async (): Promise<CaptchaResult> => {
