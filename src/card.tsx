@@ -9,10 +9,7 @@ const Card: FC<CardProps> = ({
   submitResponseCallback, // submitResponse,
 }) => {
   const [key, setKey] = useState(Math.random());
-  const [captcha, setCaptcha] = useState<CaptchaResult>({
-    background: "",
-    slider: "",
-  });
+  const [captcha, setCaptcha] = useState<CaptchaResult>();
   const isMounted = useRef(false);
 
   const refreshCaptcha = (): void => {
