@@ -27,26 +27,26 @@ const Anchor: FC<AnchorProps> = ({
   return (
     <div>
       <div
-        className="scaptcha-anchor-container scaptcha-anchor-element"
+        className="rscaptcha-anchor-container scaptcha-anchor-element"
         onClick={handleOpen}
       >
         <button
           suppressHydrationWarning
           type="button"
-          className={`scaptcha-anchor-checkbox ${
-            !verified && "scaptcha-anchor-checkbox-default"
+          className={`rscaptcha-anchor-checkbox ${
+            !verified && "rscaptcha-anchor-checkbox-default"
           } scaptcha-anchor-element`}
           onKeyUp={handleKey}
         >
           {verified && <SuccessIcon />}
         </button>
-        <div className="scaptcha-anchor-label scaptcha-anchor-element">
+        <div className="rscaptcha-anchor-label scaptcha-anchor-element">
           {text.anchor}
         </div>
       </div>
       {!verified && open && (
         <div>
-          <div className="scaptcha-hidden" onClick={handleClose} />
+          <div className="rscaptcha-hidden" onClick={handleClose} />
           <Card
             fetchCaptchaCallback={fetchCaptchaCallback}
             submitResponseCallback={submitResponseCallback}
