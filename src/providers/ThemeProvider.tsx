@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { CaptchaThemes, ThemeContext } from "@/contexts/ThemeContext";
+import { CaptchaThemes, ThemeContext } from "../contexts/ThemeContext";
 
 const getTheme = (): CaptchaThemes => {
   const userMedia = window.matchMedia("(prefers-color-scheme: light)");
