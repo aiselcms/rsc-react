@@ -151,7 +151,7 @@ const Challenge: FC<ChallengeProps> = ({ text, captcha, completeCaptcha }) => {
         </div>
         <div
           className={`rsc-card-slider-mask ${sliderVariant.track} scaptcha-card-element`}
-          style={{ width: `${trail.x[trail.x.length - 1] + 30}px` }}
+          style={{ width: `${trail.x[trail.x.length - 1] + 26}px` }}
         />
         <div
           className="rsc-card-slider-container scaptcha-card-element"
