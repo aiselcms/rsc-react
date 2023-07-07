@@ -33,26 +33,6 @@
   animation: rsc-open-anim 0.3s ease-in-out 1 forwards;
 }
 
-.body {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: auto;
-}
-
-.body-captcha {
-  width: 200px;
-  height: 50px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-}
-
 .rsc-container {
   box-sizing: border-box;
   max-width: 200px;
