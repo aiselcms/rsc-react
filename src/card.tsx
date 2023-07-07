@@ -60,7 +60,7 @@ const Card: FC<CardProps> = ({
           completeCaptcha={completeCaptcha}
         />
       ) : (
-        <div className="rsc-card-loading scaptcha-card-element">
+        <div className="rsc-card-loading rsc-open scaptcha-card-element">
           <LoadingIcon />
         </div>
       )}
