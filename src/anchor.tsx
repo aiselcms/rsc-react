@@ -40,7 +40,7 @@ const Anchor: FC<AnchorProps> = ({
         >
           {verified && <SuccessIcon />}
         </button>
-        <div className="rsc-anchor-label scaptcha-anchor-element">
+        <div className="rsc-anchor-label scaptcha-anchor-element" aria-readonly={true}>
           {text.anchor}
         </div>
       </div>
