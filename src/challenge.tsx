@@ -126,7 +126,7 @@ const Challenge: FC<ChallengeProps> = ({ text, captcha, completeCaptcha }) => {
       onMouseLeave={handleEnd}
     >
       <div
-        className="rsc-card-backgroundt"
+        className="rsc-card-background"
         style={{
           backgroundImage: `url('${imageDataUrl(captcha.background)}')`,
         }}
@@ -152,10 +152,7 @@ const Challenge: FC<ChallengeProps> = ({ text, captcha, completeCaptcha }) => {
           className={`rsc-card-slider-mask ${sliderVariant.track}`}
           style={{ width: `${trail.x[trail.x.length - 1] + 26}px` }}
         />
-        <div
-          className="rsc-card-slider-container"
-          draggable="false"
-        />
+        <div className="rsc-card-slider-container" draggable="false" />
         <div
           className={`rsc-card-slider-control ${sliderVariant.control}`}
           style={{ left: `${trail.x[trail.x.length - 1]}px` }}

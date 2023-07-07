@@ -26,10 +26,7 @@ const Anchor: FC<AnchorProps> = ({
 
   return (
     <div className={"rsc-anchor"}>
-      <div
-        className="rsc-anchor-container"
-        onClick={handleOpen}
-      >
+      <div className="rsc-anchor-container" onClick={handleOpen}>
         <button
           suppressHydrationWarning
           type="button"
