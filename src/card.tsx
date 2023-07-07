@@ -51,7 +51,7 @@ const Card: FC<CardProps> = ({
   }, []);
 
   return (
-    <div className="rsc-card-container scaptcha-card-element">
+    <div className="rsc-card-container rsc-open">
       {captcha ? (
         <Challenge
           key={key}
@@ -60,7 +60,7 @@ const Card: FC<CardProps> = ({
           completeCaptcha={completeCaptcha}
         />
       ) : (
-        <div className="rsc-card-loading rsc-open scaptcha-card-element">
+        <div className="rsc-card-loading">
           <LoadingIcon />
         </div>
       )}

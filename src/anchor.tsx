@@ -27,7 +27,7 @@ const Anchor: FC<AnchorProps> = ({
   return (
     <div className={"rsc-anchor"}>
       <div
-        className="rsc-anchor-container scaptcha-anchor-element"
+        className="rsc-anchor-container"
         onClick={handleOpen}
       >
         <button
@@ -35,12 +35,12 @@ const Anchor: FC<AnchorProps> = ({
           type="button"
           className={`rsc-anchor-checkbox ${
             !verified && "rsc-anchor-checkbox-default"
-          } scaptcha-anchor-element`}
+          }`}
           onKeyUp={handleKey}
         >
           {verified && <SuccessIcon />}
         </button>
-        <div className="rsc-anchor-label scaptcha-anchor-element">
+        <div className="rsc-anchor-label">
           {!verified ? text.anchorInit : text.anchorSuccess}
         </div>
       </div>
