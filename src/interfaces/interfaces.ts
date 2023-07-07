@@ -27,7 +27,8 @@ export type SubmitResponseCallback = (
 ) => Promise<boolean>;
 
 export type CaptchaText = {
-  anchor: string;
+  anchorInit: string;
+  anchorSuccess: string;
   challenge: string;
 };
 
