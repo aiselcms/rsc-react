@@ -108,7 +108,6 @@
   min-width: 250px;
   min-height: 150px;
   z-index: 1;
-  opacity: 0;
 }
 .rsc-container .rsc-anchor .rsc-card-container {
   position: absolute;
