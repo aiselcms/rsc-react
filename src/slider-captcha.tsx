@@ -38,6 +38,7 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
   createCallback, // create,
   verifyCallback, // verify,
   text,
+  loadingIcon,
 }) => {
   const [verified, setVerified] = useState(false);
   const submitResponse = async (
@@ -71,6 +72,7 @@ const SliderCaptcha: FC<SliderCaptchaProps> = ({
           fetchCaptchaCallback={fetchCaptcha(createCallback)}
           submitResponseCallback={submitResponse}
           verified={verified}
+          loadingIcon={loadingIcon}
         />
       </div>
     </ThemeProvider>

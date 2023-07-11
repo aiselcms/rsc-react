@@ -5,6 +5,8 @@
 /*
   TYPES
  */
+import {JSX} from "react";
+
 export type Trail = { x: number[]; y: number[] };
 export type CaptchaResult = {
   background: string;
@@ -41,6 +43,7 @@ export interface SliderCaptchaProps {
   createCallback: CreateCaptchaCallback; // create
   verifyCallback: VerifyCaptchaCallback; // verify
   text: CaptchaText;
+  loadingIcon: JSX.Element;
 }
 
 export type FetchCaptchaCallbackType = () => Promise<CaptchaResult>;
@@ -50,12 +53,14 @@ export interface AnchorProps {
   fetchCaptchaCallback: FetchCaptchaCallbackType; // fetchCaptcha
   submitResponseCallback: SubmitResponseCallback; // submitResponse
   verified: boolean;
+  loadingIcon: JSX.Element;
 }
 
 export interface CardProps {
   text: CaptchaText;
   fetchCaptchaCallback: FetchCaptchaCallbackType; // fetchCaptcha
   submitResponseCallback: SubmitResponseCallback; // submitResponse
+  loadingIcon: JSX.Element;
 }
 
 export interface ChallengeProps {

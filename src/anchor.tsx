@@ -8,6 +8,7 @@ const Anchor: FC<AnchorProps> = ({
   fetchCaptchaCallback, // fetchCaptcha,
   submitResponseCallback, // submitResponse,
   verified,
+  loadingIcon,
 }) => {
   const [open, setOpen] = useState(false);
   const handleClose = (): void => {
@@ -48,6 +49,7 @@ const Anchor: FC<AnchorProps> = ({
             fetchCaptchaCallback={fetchCaptchaCallback}
             submitResponseCallback={submitResponseCallback}
             text={text}
+            loadingIcon={loadingIcon}
           />
         </div>
       )}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, FC } from "react";
-import { LoadingIcon } from "./icons";
 import Challenge from "./challenge";
 import { CaptchaResult, CardProps, Trail } from "./interfaces/interfaces";
 
@@ -7,6 +6,7 @@ const Card: FC<CardProps> = ({
   text,
   fetchCaptchaCallback, // fetchCaptcha
   submitResponseCallback, // submitResponse,
+  loadingIcon,
 }) => {
   const [key, setKey] = useState(Math.random());
   const [captcha, setCaptcha] = useState<CaptchaResult>();
@@ -60,9 +60,7 @@ const Card: FC<CardProps> = ({
           completeCaptcha={completeCaptcha}
         />
       ) : (
-        <div className="rsc-card-loading">
-          <LoadingIcon />
-        </div>
+        <div className="rsc-card-loading">{loadingIcon}</div>
       )}
     </div>
   );
