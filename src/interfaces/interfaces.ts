@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 /*
   ENUMS
  */
@@ -5,7 +7,6 @@
 /*
   TYPES
  */
-import {JSX} from "react";
 
 export type Trail = { x: number[]; y: number[] };
 export type CaptchaResult = {
@@ -13,7 +14,7 @@ export type CaptchaResult = {
   slider: string;
 };
 export type VerificationResult = {
-  result: string;
+  result: boolean;
   token: string;
 };
 
