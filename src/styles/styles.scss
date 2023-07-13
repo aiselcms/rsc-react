@@ -1,7 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400&display=swap');
+
+$color1: #2c4a52;
+$color2: #537072;
+$color3: #8e9b97;
+$color4: #f4ebdb;
+
+:root[data-theme="light"] {
+  --rsc-anchor-container-background-color: #8e9b97;
+  --rsc-anchor-border-color: #537072;
+  --rsc-anchor-text-color: #f4ebdb;
+  --rsc-card-container-background-color: #8e9b97;
+  --rsc-card-slider-control-background-color: #8e9b97;
+  --rsc-card-slider-label-color: #f4ebdb;
+}
+
+:root[data-theme="dark"] {
+  --rsc-anchor-container-background-color: #8e9b97;
+  --rsc-anchor-border-color: #537072;
+  --rsc-anchor-text-color: #f4ebdb;
+  --rsc-card-container-background-color: #8e9b97;
+  --rsc-card-slider-control-background-color: #8e9b97;
+  --rsc-card-slider-label-color: #f4ebdb;
+}
+
+:root {
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 100;
+}
+
 $captcha-width: 200px;
 $captcha-height: 50px;
 
-$slider-control-default-color: #d9d9d9;
 $slider-control-active-color: #337ab7;
 $slider-control-success-color: #5cb85c;
 $slider-control-failure-color: #d9534f;
@@ -67,9 +96,10 @@ $slider-control-failure-color: #d9534f;
       display: flex;
       align-items: center;
       justify-content: left;
-      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      background-color: #f8f8f8;
+      box-shadow: 0px 0px 3px 0px var(--rsc-anchor-border-color);
+      border: 1px solid var(--rsc-anchor-border-color);
+      background-color: var(--rsc-anchor-container-background-color);
+      color: var(--rsc-anchor-text-color);
       width: 100%;
       height: $captcha-height;
       padding: 13px;
@@ -98,7 +128,6 @@ $slider-control-failure-color: #d9534f;
         display: flex;
         align-items: center;
         justify-content: left;
-        color: #424242;
         transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         margin-left: 13px;
         cursor: default;
@@ -133,7 +162,7 @@ $slider-control-failure-color: #d9534f;
       padding: 15px 15px 0 15px;
       min-width: 250px;
       min-height: 200px;
-      background-color: #f1f1f1;
+      background-color: var(--rsc-card-container-background-color);
       box-shadow: 0px -1px 0px -2px rgba(0, 0, 0, 0.2), 0px 2px 9px 0px rgba(0, 0, 0, 0.14), 0px 5px 9px 0px rgba(0, 0, 0, 0.15);
       margin-top: -150px;
       margin-left: -25px;
@@ -172,7 +201,7 @@ $slider-control-failure-color: #d9534f;
         width: 250px;
         height: 24px;
         border-radius: 3px;
-        background-color: $slider-control-default-color;
+        background-color: var(--rsc-card-slider-control-background-color);
         @extend .rsc-progress;
       }
 
@@ -196,7 +225,7 @@ $slider-control-failure-color: #d9534f;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #716e6e;
+        color: var(--rsc-card-slider-label-color);
         padding-left: 0;
         position: absolute;
         top: 3px;
